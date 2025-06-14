@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: sans-serif;
+}
+
+:root {
+    --main: #e7eaf6; 
+    --secondary: #a2a8d3; 
+    --highlight: #38598b; 
+    --dark: #113f67;  
+}
+
+.main-container {
+    display: flex;
+}
+
+.sidebar {
+    min-height: 100vh;
+    min-width: 21rem;
+    background-color: var(--secondary);
+    padding: 2rem 1.5rem;
+}
+
+.menu {
+    /* display: flex; */
+    display: none;
+    justify-content: flex-end;
+}
+
+/* Base style */
+.btn-delete {
+  background-color: #dc3545;        /* Bootstrap danger red */
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover state */
+.btn-delete:hover {
+  background-color: #c82333;        /* Slightly darker red */
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Red glow */
+}
+
+/* Active/clicked state */
+.btn-delete:active {
+  background-color: #bd2130;        /* Even darker red */
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Pressed effect */
+  transform: scale(0.98);           /* Slight shrink */
+}
+
+/* Focus state for accessibility */
+.btn-delete:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
+}
+
+.dashboard {
+    background-color: var(--main);
+    padding: 5rem 9rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+}
+
+.dashboard-title {
+    font-size: 28px;
+    font-weight: 700;
+    padding-bottom: 3rem;
+    border-bottom: 1px rgb(153, 153, 153) solid;
+    max-width: 70rem;
+}
+
+.todos {
+    display: flex;
+    min-width: 50rem;
+    max-width: 70rem;
+    margin: 1rem 0;
+    /* background-color: black; */
+}
+
+.circular-btn {
+  width: 25px;
+  height: 25px;
+  border: 2px solid grey;
+  background-color: transparent;
+  border-radius: 50%;
+  color: grey;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-btn:hover {
+  background-color: rgba(128, 128, 128, 0.1); /* Light hover effect */
+}
+
+.circular-btn.active {
+  background-color: rgb(160, 160, 160);
+  color: white;
+  border-color: grey;
+}
+
+
+.todo {
+    background-color: beige;
+    border-bottom: 1px rgb(153, 153, 153) solid;
+    padding-bottom: 2rem;
+}
