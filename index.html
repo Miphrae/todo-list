@@ -1,20 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <title>Todo List</title>
 </head>
+
 <body>
     <div class="main-container">
-        <div class="sidebar"> TEST </div>
+        <div class="sidebar">
+            <div class="logo">
+                <p> Todo List </p>
+            </div>
+            <div class="basic-sidebar functions">
+                <div class="add-task basic-task">
+                    <div class="icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="basic-text">Add New Task</div>
+                </div>
+                <div class="today basic-task">
+                    <div class="icon">
+                        <i class="fa-solid fa-calendar"></i>
+                    </div>
+                    <div class="basic-text">Today</div>
+                </div>
+                <div class="upcoming basic-task">
+                    <div class="icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div class="basic-text">Upcoming</div>
+                </div>
+            </div>
+            <div class="my-projects basic-sidebar">
+                <div class="project basic-task">
+                    <div class="icon">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                    <div class="basic-text project-name">School</div>
+                </div>
+                <div class="project basic-task">
+                    <div class="icon">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                    <div class="basic-text project-name">Life</div>
+                </div>
+                <div class="project basic-task">
+                    <div class="icon">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                    <div class="basic-text project-name">Hobbies</div>
+                </div>
+            </div>
+        </div>
         <div class="dashboard">
             <div class="menu">
                 <button class="btn-delete"> Delete </button>
             </div>
-            <div class="dashboard-title"> Today </div>
+            <div class="dashboard-title-container">
+                <div class="dashboard-title"> Today </div>
+                <div class="tasks-number"> 16 tasks</div>
+            </div>
             <div class="todos">
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo"> 7:30 </div>
+                            <div class="project"> #Appointments </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="todo">
                     <div class="left-todo">
                         <button class="circular-btn" id="toggleBtn"></button>
@@ -32,4 +195,5 @@
     </div>
     <script src="main.js"></script>
 </body>
+
 </html>
