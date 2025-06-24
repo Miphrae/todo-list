@@ -40,7 +40,7 @@
                     <div class="basic-text">Upcoming</div>
                 </div>
             </div>
-            <div class="my-projects basic-sidebar">
+            <div class="my-projects basic-sidebar" id="my-projects">
                 <div class="add-project basic-task">
                     <div class="icon">
                         <i class="fas fa-plus-circle"></i>
@@ -200,16 +200,19 @@
         </div>
     </div>
     <!-- <script src="main.js"></script> -->
-    <div id="project-modal-overlay" class="hidden">
-        <div id="project-modal">
-            <h2>New Project</h2>
-            <input type="text" id="new-project-name" placeholder="Project name…" />
-            <div class="modal-buttons">
-                <button id="create-project-btn" class="funcBtn">Create</button>
-                <button id="cancel-project-btn" class="funcBtn">Cancel</button>
+    <template id="new-project-template">
+        <div id="project-modal-overlay">
+            <div id="project-modal">
+                <h2>New Project</h2>
+                <input type="text" id="new-project-name" placeholder="Project name…" />
+                <div class="modal-buttons">
+                    <button id="create-project-btn" class="funcBtn">Create</button>
+                    <button id="cancel-project-btn" class="funcBtn">Cancel</button>
+                </div>
             </div>
         </div>
-    </div>
+    </template>
+
 </body>
 
 </html>

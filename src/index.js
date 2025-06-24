@@ -7,20 +7,29 @@ import "./style.css";
 // console.log(testProject);
 // console.log(testProject.title);
 document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("project-modal-overlay");
   const addProjectBtn = document.querySelector(".add-project");
   const cancelBtn = document.getElementById("cancel-project-btn");
   const createBtn = document.getElementById("create-project-btn");
   const input = document.getElementById("new-project-name");
 
   addProjectBtn.addEventListener("click", () => {
-    domManipulation.openAddProjectBox();
+    const { input, createBtn } = domManipulation.openAddProjectBox();
+
+    createBtn.addEventListener('click', () => {
+      const name = input.value.trim();
+      if (!name) {
+        alert("Enter a project name");
+        input.focus();
+        return;
+      }
+      domManipulation.addNewProject(name);
+      
+      domManipulation.closeAddProjectBox();
+    });
+
+    
+
   });
 
-  cancelBtn.addEventListener("click", () =>
-    domManipulation.closeAddProjectBox()
-  );
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) domManipulation.closeAddProjectBox();
-  });
+
 });
