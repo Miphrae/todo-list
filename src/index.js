@@ -8,6 +8,7 @@ import "./style.css";
 // console.log(testProject.title);
 document.addEventListener("DOMContentLoaded", () => {
   const addProjectBtn = document.querySelector(".add-project");
+  const addTaskBtn = document.querySelector(".add-task")
   const cancelBtn = document.getElementById("cancel-project-btn");
   const createBtn = document.getElementById("create-project-btn");
   const input = document.getElementById("new-project-name");
@@ -26,9 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
       
       domManipulation.closeAddProjectBox();
     });
+  });
 
-    
-
+  addTaskBtn.addEventListener("click", () => {
+      const { inputs, createBtn } = domManipulation.openAddTaskBox();
   });
 
 
