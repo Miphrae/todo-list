@@ -213,6 +213,43 @@
         </div>
     </template>
 
+    <template id="new-task-template">
+        <div class="modal-overlay">
+            <div id="modal-box">
+                <h2>New Project</h2>
+                <label>
+                    Title
+                    <input type="text" class="task-input" data-field="title" placeholder="Task title..." />
+                </label>
+                <label>
+                    Description
+                    <textarea class="task-input" data-field="description" placeholder="Task description..."></textarea>
+                </label>
+                <label>
+                    Due date
+                    <input type="date" class="task-input" data-field="dueDate" />
+                </label>
+                <label>
+                    Priority
+                    <select class="task-input" data-field="dueDate">
+                        <option value="priority1">Priority 1</option>
+                        <option value="priority2">Priority 2</option>
+                        <option value="priority3">Priority 3</option>
+                    </select>
+                </label>
+                <label>
+                    Description
+                    <select class="task-input" data-field="projectSelect">
+                    </select>
+                </label>
+                <div class="modal-actions">
+                    <button class="create-task-btn">Create</button>
+                    <button class="cancel-task-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
 </body>
 
 </html>
