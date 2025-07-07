@@ -1,39 +1,43 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-    height: 100%;
-    font-family: "Roboto", sans-serif;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
-    --main: #e7eaf6; 
-    --secondary: #dfe3f3; 
-    --highlight: #38598b; 
-    --dark: #113f67;  
+  --main: #e7eaf6;
+  --secondary: #dfe3f3;
+  --highlight: #38598b;
+  --dark: #113f67;
 }
 
 .main-container {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
 
 .sidebar {
-    position: fixed;             /* Stay in place when scrolling */
-    top: 0;
-    left: 0;
-    height: 100vh;               /* Full viewport height */
-    width: 21rem;               /* Fixed width */
-    background-color: var(--secondary);
-    padding: 2rem 1.5rem;
-    overflow-y: auto;           /* Optional: scroll if sidebar content overflows */
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  position: fixed;
+  /* Stay in place when scrolling */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  /* Full viewport height */
+  width: 21rem;
+  /* Fixed width */
+  background-color: var(--secondary);
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+  /* Optional: scroll if sidebar content overflows */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .basic-sidebar {
@@ -59,7 +63,8 @@ body {
 }
 
 .basic-task:hover {
-  background-color: rgba(128, 0, 128, 0.1); /* light purple hover */
+  background-color: rgba(128, 0, 128, 0.1);
+  /* light purple hover */
 }
 
 .icon i {
@@ -73,12 +78,12 @@ body {
 }
 
 .menu {
-    /* display: flex; */
-    /* display: none; */
-    justify-content: flex-end;
-    min-width: 35rem;
-    max-width: 50rem;
-    width: 100%;
+  /* display: flex; */
+  /* display: none; */
+  justify-content: flex-end;
+  min-width: 35rem;
+  max-width: 50rem;
+  width: 100%;
 }
 
 .funcBtn {
@@ -92,7 +97,8 @@ body {
 
 /* Base style */
 .btn-delete {
-  background-color: #dc3545;        /* Bootstrap danger red */
+  background-color: #dc3545;
+  /* Bootstrap danger red */
   color: white;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -104,15 +110,20 @@ body {
 
 /* Hover state */
 .btn-delete:hover {
-  background-color: #c82333;        /* Slightly darker red */
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Red glow */
+  background-color: #c82333;
+  /* Slightly darker red */
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  /* Red glow */
 }
 
 /* Active/clicked state */
 .btn-delete:active {
-  background-color: #bd2130;        /* Even darker red */
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Pressed effect */
-  transform: scale(0.98);           /* Slight shrink */
+  background-color: #bd2130;
+  /* Even darker red */
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  /* Pressed effect */
+  transform: scale(0.98);
+  /* Slight shrink */
 }
 
 /* Focus state for accessibility */
@@ -122,29 +133,30 @@ body {
 }
 
 .dashboard {
-    margin-left: 21rem;  /* same as .sidebar width */
-    background-color: var(--main);
-    padding: 5rem 8rem;
-    width: calc(100% - 21rem); 
-    display: flex;
-    flex-direction: column;
-    min-width: 800px;    
-    min-height: 600px;   
-    align-items: center;
-    /* height: 100vh; */
+  margin-left: 21rem;
+  /* same as .sidebar width */
+  background-color: var(--main);
+  padding: 5rem 8rem;
+  width: calc(100% - 21rem);
+  display: flex;
+  flex-direction: column;
+  min-width: 800px;
+  min-height: 600px;
+  align-items: center;
+  /* height: 100vh; */
 }
 
 .dashboard-title-container {
-    padding-bottom: 2rem;
-    border-bottom: 1px rgb(196, 196, 196) solid;
-    min-width: 35rem;
-    max-width: 50rem;
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px rgb(196, 196, 196) solid;
+  min-width: 35rem;
+  max-width: 50rem;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .dashboard-title {
@@ -154,17 +166,17 @@ body {
 
 .tasks-number {
   font-size: 14px;
-  color:#7c7c7c;
+  color: #7c7c7c;
 }
 
 .todos {
-    display: flex;
-    flex-direction: column;
-    min-width: 35rem;
-    max-width: 50rem;
-    width: 100%;
-    /* margin: 1rem 0; */
-    /* background-color: black; */
+  display: flex;
+  flex-direction: column;
+  min-width: 35rem;
+  max-width: 50rem;
+  width: 100%;
+  /* margin: 1rem 0; */
+  /* background-color: black; */
 }
 
 .circular-btn {
@@ -183,7 +195,8 @@ body {
 }
 
 .circular-btn:hover {
-  background-color: rgba(128, 128, 128, 0.1); /* Light hover effect */
+  background-color: rgba(128, 128, 128, 0.1);
+  /* Light hover effect */
 }
 
 .circular-btn.active {
@@ -194,15 +207,15 @@ body {
 
 
 .todo {
-    /* background-color: beige; */
-    border-bottom: 1px rgb(196, 196, 196) solid;
-    padding-bottom: 2rem;
-    min-width: 35rem;
-    max-width: 70rem;
-    width: 100%;
-    display: flex;
-    padding: 0.7rem;
-    gap: 1rem;
+  /* background-color: beige; */
+  border-bottom: 1px rgb(196, 196, 196) solid;
+  padding-bottom: 2rem;
+  min-width: 35rem;
+  max-width: 70rem;
+  width: 100%;
+  display: flex;
+  padding: 0.7rem;
+  gap: 1rem;
 }
 
 .right-todo {
@@ -232,7 +245,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
@@ -244,7 +257,7 @@ body {
   background: #fff;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   max-width: 90%;
   width: 320px;
 }
@@ -277,3 +290,56 @@ body {
   display: none !important;
 }
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#modal-box {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: .5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 320px;
+  max-width: 90%;
+}
+
+#modal-box label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+#modal-box input[type="text"],
+#modal-box input[type="date"],
+#modal-box textarea,
+#modal-box select {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.3rem;
+  box-sizing: border-box;
+}
+
+#modal-box textarea {
+  resize: vertical;
+  min-height: 3rem;
+}
+
+.modal-actions {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
