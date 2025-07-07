@@ -1,21 +1,18 @@
 export const domManipulation = (() => {
   const tpl = document.getElementById("new-project-template");
+  const tplTask = document.getElementById("new-task-template");
 
   function openAddProjectBox() {
-    // Clone & insert
     const clone = tpl.content.cloneNode(true);
     document.body.appendChild(clone);
 
-    // Now grab the elements that actually exist
     const overlay = document.getElementById("project-modal-overlay");
     const input = document.getElementById("new-project-name");
     const cancelBtn = document.getElementById("cancel-project-btn");
     const createBtn = document.getElementById("create-project-btn");
 
-    // Focus the freshly-inserted input
     input.focus();
 
-    // wire up close
     cancelBtn.addEventListener("click", () => overlay.remove());
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) overlay.remove();
@@ -50,5 +47,42 @@ export const domManipulation = (() => {
 
     myProjects.appendChild(newProject);
   }
-  return { openAddProjectBox, closeAddProjectBox, addNewProject };
+
+  function openAddTaskBox() {
+    const cloneTask = tplTask.content.cloneNode(true);
+    document.body.appendChild(cloneTask);
+
+    const overlay = document.querySelector(".modal-overlay")
+    const inputs = overlay.querySelectorAll(".task-input");
+    const createBtn = overlay.querySelector(".create-task-btn");
+    const cancelBtn = overlay.querySelector(".cancel-task-btn");
+    const projectSelect = overlay.querySelector('select[data-field="projectSelect"]');
+    const addTaskBtn = document.querySelector(".add-task");
+    const todosContainer = document.querySelector(".todos");
+    const projectSidebar = document.querySelector(".my-projects");
+    const taskTpl = document.getElementById("new-task-template");
+
+    projectSelect.innerHTML = "";
+    projectSidebar
+      .querySelectorAll(".project-name")
+      .forEach(p => {
+        const opt = document.createElement("option");
+        opt.value = p.textContent.trim();
+        opt.textContent = p.textContent.trim();
+        projectSelect.appendChild(opt);
+      });
+
+    overlay.querySelector('input[data-field="title"]').focus();
+
+    cancelBtn.addEventListener("click", () => overlay.remove());
+    overlay.addEventListener("click", e => {
+      if (e.target === overlay) overlay.remove();
+    });
+
+    return { overlay, inputs, createBtn };
+  }
+
+
+
+  return { openAddProjectBox, closeAddProjectBox, addNewProject, openAddTaskBox };
 })();
