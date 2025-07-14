@@ -1,7 +1,29 @@
-export { todo };
-import { compareAsc, format } from "date-fns";
+export { Todo };
+import { parseISO, compareAsc, format } from "date-fns";
 
-class todo {
+function prettyDate(dueDateString) {
+  // 1) parse the ISO string into a JS Date
+  const date = parseISO(dueDateString);
+
+  // 2) format it however you like. Here are some examples:
+
+  // Full, human-friendly: “July 14, 2025”
+  // const full  = format(date, "MMMM d, yyyy");
+
+  // Short/condensed: “Jul 14, 2025”
+  const short = format(date, "MMM d, yyyy");
+
+  // Weekday + short: “Mon, Jul 14”
+  // const weekdayShort = format(date, "EEE, MMM d");
+
+  // Numeric: “07/14/2025”
+  // const numeric = format(date, "MM/dd/yyyy");
+
+  // return { full, short, weekdayShort, numeric };
+  return short;
+}
+
+class Todo {
   #title;
   #description;
   #dueDate;
@@ -13,13 +35,13 @@ class todo {
     title,
     description = "",
     dueDate,
-    priority = 0,
+    priority = 3,
     project = "",
     isDone = false
   ) {
     this.#title = title;
     this.#description = description;
-    this.#dueDate = new Date(dueDate[0],dueDate[1], dueDate[2]);
+    this.#dueDate = prettyDate(dueDate);
     this.#priority = priority;
     this.#project = project;
     this.#isDone = isDone;
@@ -49,9 +71,13 @@ class todo {
   }
 
   set dueDate(value) {
-    const date = new Date(value[0],value[1],value[2]);
-    if (isNaN(date)) throw new Error("Invalid due date");
-    this.#dueDate = date;
+    // const date = new Date(value[0],value[1],value[2]);
+    // if (isNaN(date)) throw new Error("Invalid due date");
+    try {
+      this.#dueDate = prettyDate(value);
+    } catch (e) {
+      throw new Error("Invalid dueDate format. Expected ISO string.");
+    }
   }
 
   get priority() {
@@ -59,7 +85,7 @@ class todo {
   }
 
   set priority(value) {
-    const valid = [0, 1, 2, 3];
+    const valid = [1, 2, 3];
     if (!valid.includes(value)) {
       throw new Error(`Priority must be one of: ${valid.join(", ")}`);
     }

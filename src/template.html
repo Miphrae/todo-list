@@ -76,7 +76,19 @@
                 <div class="tasks-number">16 tasks</div>
             </div>
             <div class="todos">
-                <div class="todo">
+                <div class="todo priority-high">
+                    <div class="left-todo">
+                        <button class="circular-btn" id="toggleBtn"></button>
+                    </div>
+                    <div class="right-todo">
+                        <div class="text-todo">Dentist Appointment</div>
+                        <div class="additional-info-todo">
+                            <div class="time-todo">Today: 7:30</div>
+                            <div class="project">#Appointments</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="todo">
                     <div class="left-todo">
                         <button class="circular-btn" id="toggleBtn"></button>
                     </div>
@@ -195,7 +207,7 @@
                             <div class="project">#Appointments</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -231,14 +243,14 @@
                 </label>
                 <label>
                     Priority
-                    <select class="task-input" data-field="dueDate">
+                    <select class="task-input" data-field="priority">
                         <option value="priority1">Priority 1</option>
                         <option value="priority2">Priority 2</option>
                         <option value="priority3">Priority 3</option>
                     </select>
                 </label>
                 <label>
-                    Description
+                    Project
                     <select class="task-input" data-field="projectSelect">
                     </select>
                 </label>
