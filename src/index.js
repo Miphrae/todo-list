@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const description = values.description.trim();
         const dueDate = values.dueDate;
         const priority = parseInt(values.priority);
-        const project = values.projectSelect; // project name string
+        const project = values.projectSelect; 
         const completed = false;
 
         if (!title) {

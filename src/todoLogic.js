@@ -2,10 +2,7 @@ export { Todo };
 import { parseISO, compareAsc, format } from "date-fns";
 
 function prettyDate(dueDateString) {
-  // 1) parse the ISO string into a JS Date
   const date = parseISO(dueDateString);
-
-  // 2) format it however you like. Here are some examples:
 
   // Full, human-friendly: “July 14, 2025”
   // const full  = format(date, "MMMM d, yyyy");
