@@ -138,7 +138,7 @@ export const domManipulation = (() => {
     todos.appendChild(newTodo);
   }
 
-  function openTask(Todo,onDelete) {
+  function openTask(Todo, onDelete) {
     const cloneTask = tplTask.content.cloneNode(true);
     document.body.appendChild(cloneTask);
 
@@ -149,7 +149,8 @@ export const domManipulation = (() => {
     overlay.querySelector("h2").textContent = Todo.title;
     overlay.querySelector(".description").textContent = Todo.description;
     overlay.querySelector(".dueDate").textContent = Todo.dueDate;
-    overlay.querySelector(".priority").textContent = ["High", "Medium", "Low"][Todo.priority - 1] + " priority";
+    overlay.querySelector(".priority").textContent =
+      ["High", "Medium", "Low"][Todo.priority - 1] + " priority";
     overlay.querySelector(".project").textContent = Todo.project;
 
     cancelBtn.addEventListener("click", () => overlay.remove());
@@ -163,7 +164,16 @@ export const domManipulation = (() => {
     });
   }
 
-  function clearTasks() {}
+  function clearTasks() {
+    const todosContainer = document.querySelector(".todos");
+    todosContainer.innerHTML = "";
+  }
+
+  function displayTasksForProject(projectName, todos) {
+  clearTasks();
+  const filtered = todos.filter(todo => todo.project === projectName);
+  filtered.forEach(todo => domManipulation.AddTodo(todo));
+  }
 
   return {
     openAddProjectBox,
@@ -172,5 +182,7 @@ export const domManipulation = (() => {
     openAddTaskBox,
     AddTodo,
     openTask,
+    clearTasks,
+    displayTasksForProject
   };
 })();
