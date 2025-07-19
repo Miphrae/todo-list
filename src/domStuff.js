@@ -1,6 +1,8 @@
 export const domManipulation = (() => {
   const tpl = document.getElementById("new-project-template");
-  const tplTask = document.getElementById("new-task-template");
+  const tplAddTask = document.getElementById("new-task-template");
+  const tplTask = document.getElementById("task-template");
+
 
   function openAddProjectBox() {
     const clone = tpl.content.cloneNode(true);
@@ -49,7 +51,7 @@ export const domManipulation = (() => {
   }
 
   function openAddTaskBox() {
-    const cloneTask = tplTask.content.cloneNode(true);
+    const cloneTask = tplAddTask.content.cloneNode(true);
     document.body.appendChild(cloneTask);
 
     const overlay = document.querySelector(".modal-overlay");
@@ -136,11 +138,35 @@ export const domManipulation = (() => {
     todos.appendChild(newTodo);
   }
 
+  function openTask(Todo = "") {
+    const cloneTask = tplTask.content.cloneNode(true);
+    document.body.appendChild(cloneTask);
+
+    const overlay = document.querySelector(".modal-overlay");
+    const deleteBtn = overlay.querySelector(".delete-task-btn");
+    const cancelBtn = overlay.querySelector(".cancel-task-btn");
+    const addTaskBtn = document.querySelector(".add-task");
+    const todosContainer = document.querySelector(".todos");
+    const projectSidebar = document.querySelector(".my-projects");
+    const taskTpl = document.getElementById("new-task-template");
+
+
+    cancelBtn.addEventListener("click", () => overlay.remove());
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) overlay.remove();
+    });
+
+    return { overlay };
+  }
+
+  
+
   return {
     openAddProjectBox,
     closeAddProjectBox,
     addNewProject,
     openAddTaskBox,
-    AddTodo
+    AddTodo,
+    openTask
   };
 })();

@@ -4,6 +4,16 @@ import "./style.css";
 
 // const testProject = new todo("test", "test description", [2025,6,12], 2, "someProject", false);
 
+function taskListeners() {
+  const tasks = document.querySelectorAll(".todo");
+  tasks.forEach((task) => {
+    console.log(task);
+    task.addEventListener("click", () => {
+      domManipulation.openTask();
+    });
+  });
+}
+
 // console.log(testProject);
 // console.log(testProject.title);
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,8 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const cancelBtn = document.getElementById("cancel-project-btn");
   const createBtn = document.getElementById("create-project-btn");
   const input = document.getElementById("new-project-name");
+  
 
   let todos = [];
+
+  taskListeners();
 
   addProjectBtn.addEventListener("click", () => {
     const { input, createBtn } = domManipulation.openAddProjectBox();
@@ -61,4 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.remove();
     });
   });
+
+
+
+
 });
