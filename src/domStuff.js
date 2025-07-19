@@ -1,3 +1,11 @@
+import { parse, parseISO, compareAsc, format, formatISO } from "date-fns";
+
+function prettyDate(dueDateString) {
+  const date = parseISO(dueDateString);
+  const short = format(date, "MMM d, yyyy");
+  return short;
+}
+
 export const domManipulation = (() => {
   const tpl = document.getElementById("new-project-template");
   const tplAddTask = document.getElementById("new-task-template");
@@ -178,7 +186,7 @@ export const domManipulation = (() => {
   function displayTasksToday(todos) {
     clearTasks();
     const today = new Date().toISOString().split("T")[0];
-    const filtered = todos.filter(todo => todo.dueDate === today);
+    const filtered = todos.filter(todo => todo.dueDate == prettyDate(today));
     filtered.forEach(todo => domManipulation.AddTodo(todo));
   }
 

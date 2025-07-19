@@ -1,5 +1,5 @@
 export { Todo };
-import { parseISO, compareAsc, format } from "date-fns";
+import { parse, parseISO, compareAsc, format, formatISO } from "date-fns";
 
 function prettyDate(dueDateString) {
   const date = parseISO(dueDateString);
@@ -18,6 +18,11 @@ function prettyDate(dueDateString) {
 
   // return { full, short, weekdayShort, numeric };
   return short;
+}
+
+function unprettyDate(prettyString) {
+  const parsed = parse(prettyString, "MMM d, yyyy", new Date());
+  return formatISO(parsed, { representation: "complete" });
 }
 
 let nextTodoId = 1;
@@ -109,6 +114,18 @@ class Todo {
 
   set isDone(value) {
     this.#isDone = value;
+  }
+
+  toJSON() {
+    return {
+      id: this.id,
+      title: this.#title,
+      description: this.#description,
+      dueDate: unprettyDate(this.#dueDate),
+      priority: this.#priority,
+      project: this.#project,
+      isDone: this.#isDone,
+    };
   }
 
 

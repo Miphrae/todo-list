@@ -5,7 +5,7 @@ import "./style.css";
 // const testProject = new todo("test", "test description", [2025,6,12], 2, "someProject", false);
 
 let todos = [];
-let currentProject = "LIfe";
+let currentProject = "Life";
 
 function taskListeners() {
   const todosContainer = document.querySelector(".todos");
@@ -19,6 +19,7 @@ function taskListeners() {
     // console.log(todos);
 
     domManipulation.openTask(todoData, () => {
+      //this is a callback 
       const idx = todos.findIndex((t) => t.id === id);
       if (idx < -1) {
         todos.splice(idx, 1);
@@ -28,6 +29,8 @@ function taskListeners() {
       if (card) {
         card.remove();
       }
+
+      saveTodos();
     });
   });
 }
@@ -43,6 +46,24 @@ function projectListeners() {
   });
 }
 
+function saveTodos() {
+  console.log(todos);
+  console.log(JSON.stringify(todos));
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function loadTodos() {
+  const raw = localStorage.getItem("todos");
+  if (!raw) return [];
+  console.log(raw);
+  try {
+    return JSON.parse(raw);
+  } catch {
+    console.warn("Could not parse todos from LocalStorage");
+    return [];
+  }
+}
+
 // console.log(testProject);
 // console.log(testProject.title);
 document.addEventListener("DOMContentLoaded", () => {
@@ -51,16 +72,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const todayBtn = document.querySelector(".today-btn");
   const upcomingBtn = document.querySelector(".upcoming-btn");
 
-  const testTodo = new Todo(
-    "Dentist Appointment",
-    "Checkup at 3 PM",
-    "2026-05-15T15:00:00Z",
-    1,
-    "Life",
-    false
-  );
-  todos.push(testTodo);
-  domManipulation.AddTodo(testTodo);
+  // const testTodo = new Todo(
+  //   "Dentist Appointment",
+  //   "Checkup at 3 PM",
+  //   "2026-05-15T15:00:00Z",
+  //   1,
+  //   "Life",
+  //   false
+  // );
+  // todos.push(testTodo);
+  // domManipulation.AddTodo(testTodo);
+
+  todos = loadTodos().map(data => {
+    const todo = new Todo(
+      data.title,
+      data.description,
+      data.dueDate,
+      data.priority,
+      data.project,
+      data.isDone
+    );
+    todo.id = data.id; 
+    console.log(todo);
+    return todo;
+  });
+
+  todos.forEach((todo) => domManipulation.AddTodo(todo));
+
+
 
   taskListeners();
   projectListeners();
@@ -115,8 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(todos);
 
       domManipulation.AddTodo(newTodo);
+      saveTodos();
       overlay.remove();
-
+      console.log(newTodo);
       domManipulation.displayTasksForProject(currentProject, todos);
     });
   });
