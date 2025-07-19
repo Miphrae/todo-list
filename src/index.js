@@ -13,10 +13,6 @@ function taskListeners() {
     const taskEl = e.target.closest(".todo");
     if (!taskEl) return;
 
-    if (e.target.closest("circular-btn")) {
-      taskEl.classList.toggle("selected");
-    }
-
     const id = Number(taskEl.dataset.id);
     const todoData = todos.find((t) => t.id === id);
     console.log(todoData);
@@ -52,14 +48,13 @@ function projectListeners() {
 document.addEventListener("DOMContentLoaded", () => {
   const addProjectBtn = document.querySelector(".add-project");
   const addTaskBtn = document.querySelector(".add-task");
-  const cancelBtn = document.getElementById("cancel-project-btn");
-  const createBtn = document.getElementById("create-project-btn");
-  const input = document.getElementById("new-project-name");
+  const todayBtn = document.querySelector(".today-btn");
+  const upcomingBtn = document.querySelector(".upcoming-btn");
 
   const testTodo = new Todo(
     "Dentist Appointment",
     "Checkup at 3 PM",
-    "2024-05-15T15:00:00Z",
+    "2026-05-15T15:00:00Z",
     1,
     "Life",
     false
@@ -124,5 +119,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       domManipulation.displayTasksForProject(currentProject, todos);
     });
+  });
+
+  todayBtn.addEventListener("click", () => {
+    domManipulation.displayTasksToday(todos);
+  });
+
+  upcomingBtn.addEventListener("click", () => {
+    domManipulation.displayTasksUpcoming(todos);
   });
 });

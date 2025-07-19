@@ -175,6 +175,25 @@ export const domManipulation = (() => {
   filtered.forEach(todo => domManipulation.AddTodo(todo));
   }
 
+  function displayTasksToday(todos) {
+    clearTasks();
+    const today = new Date().toISOString().split("T")[0];
+    const filtered = todos.filter(todo => todo.dueDate === today);
+    filtered.forEach(todo => domManipulation.AddTodo(todo));
+  }
+
+  function displayTasksUpcoming(todos) {
+    clearTasks();
+    const today = new Date()
+    today.setHours(0, 0, 0, 0);
+    const upcoming = todos.filter(todo => {
+      const dueDate = new Date(todo.dueDate);
+      return dueDate > today;
+    })
+    .sort((a,b) => new Date(a.dueDate) - new Date(b.dueDate));
+    upcoming.forEach(todo => domManipulation.AddTodo(todo));
+  }
+
   return {
     openAddProjectBox,
     closeAddProjectBox,
@@ -183,6 +202,8 @@ export const domManipulation = (() => {
     AddTodo,
     openTask,
     clearTasks,
-    displayTasksForProject
+    displayTasksForProject,
+    displayTasksToday,
+    displayTasksUpcoming
   };
 })();
