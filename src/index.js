@@ -4,15 +4,32 @@ import "./style.css";
 
 // const testProject = new todo("test", "test description", [2025,6,12], 2, "someProject", false);
 
+let todos = [];
+
 function taskListeners() {
   const todosContainer = document.querySelector(".todos");
   todosContainer.addEventListener("click", (e) => {
     const taskEl = e.target.closest(".todo");
     if (!taskEl) return;
-    domManipulation.openTask();
+
+    const id = Number(taskEl.dataset.id);
+    const todoData = todos.find((t) => t.id === id);
+    console.log(todoData);
+    // console.log(todos);
+
+    domManipulation.openTask(todoData, () => {
+      const idx = todos.findIndex((t) => t.id === id);
+      if (idx < -1) {
+        todos.splice(idx, 1);
+      }
+
+      const card = document.querySelector(`.todo[data-id="${id}"]`);
+      if (card) {
+        card.remove();
+      }
+    });
   });
 }
-
 
 // console.log(testProject);
 // console.log(testProject.title);
@@ -22,9 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const cancelBtn = document.getElementById("cancel-project-btn");
   const createBtn = document.getElementById("create-project-btn");
   const input = document.getElementById("new-project-name");
+
   
 
-  let todos = [];
+  const testTodo = new Todo("Dentist Appointment", "Checkup at 3 PM", "2024-05-15T15:00:00Z", 1, "Life", false);
+  todos.push(testTodo);
+  domManipulation.AddTodo(testTodo);
 
   taskListeners();
 
@@ -54,28 +74,31 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const title = values.title.trim();
-        const description = values.description.trim();
-        const dueDate = values.dueDate;
-        const priority = parseInt(values.priority);
-        const project = values.projectSelect; 
-        const completed = false;
+      const description = values.description.trim();
+      const dueDate = values.dueDate;
+      const priority = parseInt(values.priority);
+      const project = values.projectSelect;
+      const completed = false;
 
-        if (!title) {
-          alert("Task needs a title");
-          return;
-        }
+      if (!title) {
+        alert("Task needs a title");
+        return;
+      }
 
-        const newTodo = new Todo(title, description, dueDate, priority, project, completed);
-        console.log(newTodo.dueDate);
-        todos.push(newTodo);
-        console.log(todos);
+      const newTodo = new Todo(
+        title,
+        description,
+        dueDate,
+        priority,
+        project,
+        completed
+      );
+      console.log(newTodo.dueDate);
+      todos.push(newTodo);
+      console.log(todos);
 
-        domManipulation.AddTodo(newTodo);
-        overlay.remove();
+      domManipulation.AddTodo(newTodo);
+      overlay.remove();
     });
   });
-
-
-
-
 });

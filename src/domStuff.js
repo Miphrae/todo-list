@@ -3,7 +3,6 @@ export const domManipulation = (() => {
   const tplAddTask = document.getElementById("new-task-template");
   const tplTask = document.getElementById("task-template");
 
-
   function openAddProjectBox() {
     const clone = tpl.content.cloneNode(true);
     document.body.appendChild(clone);
@@ -89,6 +88,7 @@ export const domManipulation = (() => {
 
     const newTodo = document.createElement("div");
     newTodo.classList.add("todo");
+    newTodo.dataset.id = Todo.id;
     switch (Todo.priority) {
       case 1:
         newTodo.classList.add("priority-high");
@@ -138,28 +138,32 @@ export const domManipulation = (() => {
     todos.appendChild(newTodo);
   }
 
-  function openTask(Todo = "") {
+  function openTask(Todo,onDelete) {
     const cloneTask = tplTask.content.cloneNode(true);
     document.body.appendChild(cloneTask);
 
     const overlay = document.querySelector(".modal-overlay");
     const deleteBtn = overlay.querySelector(".delete-task-btn");
     const cancelBtn = overlay.querySelector(".cancel-task-btn");
-    const addTaskBtn = document.querySelector(".add-task");
-    const todosContainer = document.querySelector(".todos");
-    const projectSidebar = document.querySelector(".my-projects");
-    const taskTpl = document.getElementById("new-task-template");
 
+    overlay.querySelector("h2").textContent = Todo.title;
+    overlay.querySelector(".description").textContent = Todo.description;
+    overlay.querySelector(".dueDate").textContent = Todo.dueDate;
+    overlay.querySelector(".priority").textContent = ["High", "Medium", "Low"][Todo.priority - 1] + " priority";
+    overlay.querySelector(".project").textContent = Todo.project;
 
     cancelBtn.addEventListener("click", () => overlay.remove());
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) overlay.remove();
     });
 
-    return { overlay };
+    deleteBtn.addEventListener("click", () => {
+      onDelete();
+      overlay.remove();
+    });
   }
 
-  
+  function clearTasks() {}
 
   return {
     openAddProjectBox,
@@ -167,6 +171,6 @@ export const domManipulation = (() => {
     addNewProject,
     openAddTaskBox,
     AddTodo,
-    openTask
+    openTask,
   };
 })();

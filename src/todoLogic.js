@@ -20,6 +20,8 @@ function prettyDate(dueDateString) {
   return short;
 }
 
+let nextTodoId = 1;
+
 class Todo {
   #title;
   #description;
@@ -36,6 +38,7 @@ class Todo {
     project = "",
     isDone = false
   ) {
+    this.id = nextTodoId++;
     this.#title = title;
     this.#description = description;
     this.#dueDate = prettyDate(dueDate);
