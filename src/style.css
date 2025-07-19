@@ -216,7 +216,14 @@ body {
   display: flex;
   padding: 0.7rem;
   gap: 1rem;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
 }
+
+/* .todo:active {
+  transform: scale(0.97);
+   box-shadow: 0 1px 2px rgba(0,0,0,0.2); 
+} */
 
 .todo.priority-high {
   background-color: rgba(255, 0, 0, 0.1);
@@ -228,6 +235,10 @@ body {
 
 .todo.priority-low {
   background-color: rgba(0, 128, 0, 0.1);
+}
+
+.todo:hover {
+  filter: brightness(1.1) saturate(10);
 }
 
 .right-todo {

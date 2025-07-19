@@ -5,14 +5,14 @@ import "./style.css";
 // const testProject = new todo("test", "test description", [2025,6,12], 2, "someProject", false);
 
 function taskListeners() {
-  const tasks = document.querySelectorAll(".todo");
-  tasks.forEach((task) => {
-    console.log(task);
-    task.addEventListener("click", () => {
-      domManipulation.openTask();
-    });
+  const todosContainer = document.querySelector(".todos");
+  todosContainer.addEventListener("click", (e) => {
+    const taskEl = e.target.closest(".todo");
+    if (!taskEl) return;
+    domManipulation.openTask();
   });
 }
+
 
 // console.log(testProject);
 // console.log(testProject.title);
